@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, Text, Modal, Pressable, TextInput, Button } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { FlashcardType } from '@/components/types/FlashcardType'; 
+import { FlashcardModal } from '@/components/FlashcardModal';
 
 
 
@@ -77,32 +78,16 @@ export default function HomeScreen() {
         <Text style={styles.addButtonText}>+</Text>
       </Pressable>
 
-      <Modal
-        visible={isModalVisible}
-        animationType="slide"
-        transparent={true}
-        onRequestClose={() => setModalVisible(false)}
-      >
-        <View style={styles.modalContainer}>
-          <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Add New Flashcard</Text>
-            <TextInput
-              placeholder="Word"
-              style={styles.input}
-              value={newFront}
-              onChangeText={setNewFront}
+      <FlashcardModal
+                isVisible={isModalVisible}
+                onClose={() => setModalVisible(false)}
+                onSave={addNewCard}
+                editedFront={newFront}
+                editedBack={newBack}
+                title={"New Flashcard"}
+                setEditedFront={setNewFront}
+                setEditedBack={setNewBack}
             />
-            <TextInput
-              placeholder="Definition"
-              style={styles.input}
-              value={newBack}
-              onChangeText={setNewBack}
-            />
-            <Button title="Add Card" onPress={addNewCard} />
-            <Button title="Cancel" color="red" onPress={() => setModalVisible(false)} />
-          </View>
-        </View>
-      </Modal>
     </>
   );
 }

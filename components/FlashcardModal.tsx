@@ -8,6 +8,7 @@ interface FlashcardModalProps {
     onSave: () => void;
     editedFront: string;
     editedBack: string;
+    title: string;
     setEditedFront: (text: string) => void;
     setEditedBack: (text: string) => void;
 }
@@ -18,6 +19,7 @@ export const FlashcardModal: React.FC<FlashcardModalProps> = ({
     onSave,
     editedFront,
     editedBack,
+    title,
     setEditedFront,
     setEditedBack
 }) => {
@@ -40,7 +42,7 @@ export const FlashcardModal: React.FC<FlashcardModalProps> = ({
             style={styles.modal}
         >
             <View style={[styles.modalContent, { backgroundColor: modalBackgroundColor }]}>
-                <Text style={[styles.modalTitle, { color: modalTextColor }]}>Edit Flashcard</Text>
+                <Text style={[styles.modalTitle, { color: modalTextColor }]}>{title}</Text>
                 <Text style={[styles.inputLabel, { color: modalTextColor }]}>Front</Text>
 
                 <TextInput

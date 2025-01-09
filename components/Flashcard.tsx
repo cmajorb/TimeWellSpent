@@ -122,6 +122,7 @@ const FlipCard = ({ card, index, onEdit, isTopCard }: {
                 onSave={handleSave}
                 editedFront={editedFront}
                 editedBack={editedBack}
+                title={"Edit Flashcard"}
                 setEditedFront={setEditedFront}
                 setEditedBack={setEditedBack}
             />
